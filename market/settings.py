@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'product',
+    'account',
     'rest_framework',
-    'category'
 ]
 
 MIDDLEWARE = [
@@ -126,9 +126,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
-STATIC_URL = '/market/product/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/api/media/'
+MEDIA_URL = '/media/'
 
