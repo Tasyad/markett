@@ -1,25 +1,29 @@
 from django.http import Http404
 from rest_framework.parsers import JSONParser
 
+from account.permissions import IsVendor
 from .models import Product, Category
 from .serializers import ProductSerializer
-from rest_framework import status, permissions
+from rest_framework import status, permissions, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Category
 from .serializers import CategorySerializer
+from rest_framework.permissions import IsAdminUser
 
 
 class ProductListApiView(APIView):
+    permission_classes = [IsVendor]
+
     def get(self,  request):
         products = Product.objects.all()
         serializers = ProductSerializer(products, many=True)
         return Response(serializers.data)
 
 
-
 class ProductCreateApiView(APIView):
 
+    # permission_classes = [IsAdminUser]
     def post(self, request):
         serializers = ProductSerializer(data=request.data)
         if serializers.is_valid():

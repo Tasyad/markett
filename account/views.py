@@ -36,7 +36,6 @@ class UserListApiView(APIView):
         return Response(serializer.data)
 
 
-
 class UserDetailApiView(APIView):
     permission_classes = [permissions.AllowAny]
     queryset = User.objects.all()
